@@ -1,9 +1,10 @@
-import React, { PureComponent, useState } from 'react';
+import React, { useState } from 'react';
 import api from '../api';
-
-export const Users = () => {
-    const [data, setData] = useState(api.users.fetchAll());
-    console.log(data);
+import { Bookmark } from './bookmark';
+import { Profession } from './profession';
+import { Qualities } from './qualities';
+import { Met } from './met';
+export const Users = ({ data, setData }) => {
     return (
         <>
             <table class='table'>
@@ -14,6 +15,7 @@ export const Users = () => {
                         <th scope='col'>Quality</th>
                         <th scope='col'>Proffession</th>
                         <th scope='col'>times met</th>
+                        <th scope='col'>bookmark</th>
                         <th scope='col'>rating</th>
                         <th scope='col'></th>
                     </tr>
@@ -26,15 +28,10 @@ export const Users = () => {
                                 <tr key={d.id}>
                                     <th scope='row'>{i + 1}</th>
                                     <td key>{d.name}</td>
-                                    {d.qualities.map((q) => (
-                                        <td
-                                            className={`badge bg-${q.color} m-1`}
-                                        >
-                                            {q.name}
-                                        </td>
-                                    ))}
-                                    <td>{d.profession.name}</td>
-                                    <td>{d.completedMeetings}</td>
+                                    <Qualities d={d} />
+                                    <Profession d={d} />
+                                    <Met d={d} />
+                                    <Bookmark />
                                     <td>{d.rate}</td>
                                     <button
                                         onClick={() => {
