@@ -1,5 +1,10 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
-export const Profession = ({ d }) => {
-    return <td>{d.profession.name}</td>;
+export const Profession = ({ data }) => {
+    return <td>{data.profession.name}</td>;
+};
+
+Profession.propTypes = {
+    data: PropTypes.object
 };

@@ -1,5 +1,10 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
-export const Met = ({ d }) => {
-    return <td>{d.completedMeetings}</td>;
+export const Met = ({ data }) => {
+    return <td>{data.completedMeetings}</td>;
+};
+
+Met.propTypes = {
+    data: PropTypes.object
 };
