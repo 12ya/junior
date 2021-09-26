@@ -8,6 +8,7 @@ import { Met } from "./met";
 
 export const User = ({ data, i, deleteItem }) => {
     console.log(data, "data in user");
+
     return (
         <tr key={data.id}>
             <th scope="row">{i + 1}</th>
