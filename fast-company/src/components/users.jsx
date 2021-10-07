@@ -8,6 +8,7 @@ import { pagination } from "../utils/paginate";
 import api from "../api";
 import { UsersTable } from "./usersTable";
 import _ from "lodash";
+import { useParams } from "react-router-dom";
 
 export const Users = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -15,10 +16,24 @@ export const Users = () => {
     const [selectedProf, setSelectedProf] = useState();
     const [order, setOrder] = useState({ path: "name", order: "asc" });
     const [data, setData] = useState();
+    const [userData, setUserData] = useState();
+
+    const params = useParams();
+
+    const { userId } = params;
 
     useEffect(() => {
         api.users.default.fetchAll().then((d) => setData(d));
     }, []);
+
+    useEffect(() => {
+        console.log("useridinyouknow");
+
+        api.users.default.getById(userId).then((d) => {
+            console.log(d, "datainuserdetailed");
+            setUserData(d);
+        });
+    }, [userId]);
 
     const pageSize = 5;
 
@@ -69,6 +84,15 @@ export const Users = () => {
 
     if (!data) {
         return "...Loading";
+    }
+
+    if (userId) {
+        return (
+            <div>
+                USERID: {userId}
+                {userData}
+            </div>
+        );
     }
 
     return (
