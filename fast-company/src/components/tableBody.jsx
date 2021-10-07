@@ -20,7 +20,7 @@ export const TableBody = ({ data, columns }) => {
                 <tr key={item._id}>
                     {Object.keys(columns).map((column) =>
                         columns[column].path === "name" ? (
-                            <Link to={`/users:${item._id}`}>
+                            <Link to={`/users/${item._id}`}>
                                 <td key={column}>
                                     {renderContent(item, column)}
                                 </td>
