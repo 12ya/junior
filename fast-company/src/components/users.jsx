@@ -8,11 +8,14 @@ import { pagination } from "../utils/paginate";
 import api from "../api";
 import { UsersTable } from "./usersTable";
 import _ from "lodash";
+import { SearchBar } from "./searchbar";
 
 export const Users = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [professions, setProfessions] = useState();
+    const [text, setText] = useState("");
     const [selectedProf, setSelectedProf] = useState();
+    const [searchedUsers, setSearchedUsers] = useState([]);
     const [order, setOrder] = useState({ path: "name", order: "asc" });
     const [data, setData] = useState();
 
@@ -36,7 +39,14 @@ export const Users = () => {
 
     const sortedUsers = _.orderBy(filteredUsers, [order.path], [order.order]);
 
-    const users = pagination(sortedUsers, currentPage, pageSize);
+    const searchedU =
+        text.length > 0
+            ? sortedUsers.filter(
+                  (su) => su.name.toLowerCase().indexOf(text) != -1
+              )
+            : sortedUsers;
+
+    const users = pagination(searchedU, currentPage, pageSize);
 
     useEffect(() => {
         api.professions.fetchAll().then((prof) => setProfessions(prof));
@@ -89,8 +99,9 @@ export const Users = () => {
                 </div>
             )}
             <div className="d-flex flex-column">
+                <SearchBar text={text} setText={setText} />
                 <UsersTable
-                    users={users}
+                    users={searchedUsers.length > 0 ? searchedUsers : users}
                     setData={setData}
                     deleteItem={deleteItem}
                     onSort={handleSort}
