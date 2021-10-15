@@ -17,18 +17,21 @@ export const TableHeader = ({ onSort, selectedSort, columns }) => {
         }
     };
 
+    const renderArrow = (selectedSort, currentPath) => {
+        if (selectedSort.path === currentPath) {
+            if (selectedSort.order === "asc") {
+                return <i class="bi bi-caret-down-fill"></i>;
+            } else {
+                return <i class="bi bi-caret-up-fill"></i>;
+            }
+        }
+    };
+
     return (
         <thead>
             <tr>
                 {Object.keys(columns).map((column) => (
                     <th
-                        className={
-                            columns[column].path && arrow && up
-                                ? "bi bi-caret-down-fill"
-                                : columns[column].path && arrow && !up
-                                ? "bi bi-caret-up-fill"
-                                : null
-                        }
                         onClick={
                             columns[column].path
                                 ? () => {
@@ -42,6 +45,7 @@ export const TableHeader = ({ onSort, selectedSort, columns }) => {
                         role={columns[column].path && "button"}
                     >
                         {columns[column].name}
+                        {renderArrow(selectedSort, columns[column].path)}
                     </th>
                 ))}
             </tr>

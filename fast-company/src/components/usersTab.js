@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Users } from "./users";
+import { Users } from "../layout/users";
 
 import { UsersDetailed } from "./usersDetailed";
 

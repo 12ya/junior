@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import { User } from "./user";
-import { Pagination } from "./pagination";
-import { GroupList } from "./groupList";
+import { Pagination } from "../components/common/pagination";
+import { GroupList } from "../components/common/groupList";
 import { pagination } from "../utils/paginate";
 import api from "../api";
-import { UsersTable } from "./usersTable";
+import { UsersTable } from "../components/ui/usersTable";
 import _ from "lodash";
-import { SearchBar } from "./searchbar";
+import { SearchBar } from "../components/searchbar";
 
 export const Users = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -20,7 +19,7 @@ export const Users = () => {
     const [data, setData] = useState();
 
     useEffect(() => {
-        api.users.default.fetchAll().then((d) => setData(d));
+        api.users.fetchAll().then((d) => setData(d));
     }, []);
 
     const pageSize = 5;

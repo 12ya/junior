@@ -1,11 +1,10 @@
 import React from "react";
 // import { User } from "./user";
 import PropTypes from "prop-types";
-import { TableHeader } from "./tableHeader";
-import { TableBody } from "./tableBody";
-import { Bookmark } from "./bookmark";
-import { QualitiesList } from "./qualitiesList";
-import { Table } from "./table";
+
+import { Bookmark } from "../common/bookmark";
+import { QualitiesList } from "../ui/qualities/qualitiesList";
+import Table, { TableBody, TableHeader } from "../common/table";
 
 export const UsersTable = ({
     users,
