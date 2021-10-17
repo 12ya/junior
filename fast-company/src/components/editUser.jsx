@@ -85,6 +85,12 @@ export const EditUser = () => {
 
     return (
         <div className="container mt-5">
+            <button
+                onClick={() => history.goBack()}
+                className="btn btn-primary"
+            >
+                <i class="bi bi-arrow-left"></i> back
+            </button>
             <div className="row">
                 <div className="col-md-6 offset-md-3 shadow p-4">
                     <h3 className="mb-4">Edit User</h3>
@@ -126,16 +132,10 @@ export const EditUser = () => {
                             label={"choose your qualities"}
                             value={data.qualities}
                         />
-                        <CheckBoxField
-                            value={data.licence}
-                            onChange={handleChange}
-                            name="licence"
-                        >
-                            licence agreement <a>terms</a>
-                        </CheckBoxField>
                         <button
                             className="btn btn-primary w-100 mx-auto"
-                            onClick={() => history.push(`/users/`)}
+                            onClick={() => history.goBack()}
+                            // onClick={() => history.push(`/users/`)}
                         >
                             Submit
                         </button>

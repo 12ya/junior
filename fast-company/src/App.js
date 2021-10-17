@@ -10,8 +10,8 @@ export const App = () => {
     return (
         <>
             <Navbar />
-            <Route path="/users/:userId?" component={UsersTab} />
             <Route path="/users/:userId/edit" component={EditUser} />
+            <Route exact path="/users/:userId?" component={UsersTab} />
             <Route path="/main" component={Main} />
             <Route path="/login/:type?" component={Login} />
         </>

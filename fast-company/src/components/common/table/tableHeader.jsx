@@ -20,9 +20,9 @@ export const TableHeader = ({ onSort, selectedSort, columns }) => {
     const renderArrow = (selectedSort, currentPath) => {
         if (selectedSort.path === currentPath) {
             if (selectedSort.order === "asc") {
-                return <i class="bi bi-caret-down-fill"></i>;
+                return <i className="bi bi-caret-down-fill"></i>;
             } else {
-                return <i class="bi bi-caret-up-fill"></i>;
+                return <i className="bi bi-caret-up-fill"></i>;
             }
         }
     };
