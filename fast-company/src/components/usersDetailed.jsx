@@ -202,11 +202,12 @@ export const UsersDetailed = ({ userId }) => {
                                         onClick={() => {
                                             addComment();
                                             fetchComments();
+                                            setMessage('')
                                         }}
                                         style={{ alignSelf: "flex-end" }}
                                         className="btn btn-primary"
                                     >
-                                        butt
+                                        add
                                     </button>
                                 </div>
                             </div>

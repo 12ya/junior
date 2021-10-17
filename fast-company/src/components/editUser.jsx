@@ -81,6 +81,7 @@ export const EditUser = () => {
         console.log(data);
 
         api.users.update(userId, data);
+        history.goBack();
     };
 
     return (
@@ -134,7 +135,7 @@ export const EditUser = () => {
                         />
                         <button
                             className="btn btn-primary w-100 mx-auto"
-                            onClick={() => history.goBack()}
+                            onClick={handleSubmit}
                             // onClick={() => history.push(`/users/`)}
                         >
                             Submit
