@@ -65,7 +65,7 @@ export const EditUser = () => {
                 }));
                 setData((prev) => ({
                     ...prev,
-                    qualities: userData.qualities.map((q) => q.label)
+                    qualities: userData.qualities.map((q) => q.name)
                 }));
                 // setData((prev) => ({
                 //     ...prev,
